@@ -1,19 +1,20 @@
 """This file containts the class for creating 'populations'."""
-from chromosome import Chromosome
+from .chromosome import Chromosome
 import random
 
 
 class Population:
     """Class to get basic attributes and methods for a population."""
     size = None
-    chromosomes = None
+    chromosomes = list()
 
-    def __init__(self, size: int, chromosome_size: int):
+    def __init__(self, size: int, chromosome_size=None):
         """Initialize the object.
         param size: Integer with the size of the population
         param chromosome_size: Integer with the size of the chromosome"""
         self.size = size
-        self.chromosomes = [Chromosome(chromosome_size) for _ in range(self.size)]
+        if chromosome_size is not None:
+            self.chromosomes = [Chromosome(chromosome_size) for _ in range(self.size)]
 
     def get_tournament_winner(self, mapping_table: dict) -> Chromosome:
         """Identify the Chromosome winner of a tournament. Choosing only the 5% of the population size.

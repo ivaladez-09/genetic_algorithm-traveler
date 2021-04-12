@@ -1,6 +1,6 @@
 """This file contains the required methods to apply the genetic algorith logic to the traveler problem."""
 import matplotlib.pyplot as plt
-from population import Population
+from .population import Population
 
 
 class TravelerServices:
@@ -37,6 +37,7 @@ class TravelerServices:
                 # Calculate for first time the AF of the best chromosome
                 self.best_chromosome.calculate_aptitude_function(self.mapping_table)
 
+
             # self.plot(population=child_population, generation=generation)
 
     def get_next_generation(self, population: Population) -> Population:
@@ -44,10 +45,10 @@ class TravelerServices:
 
         param population: Population with the content for creating the next generation.
         return: Population equals to the next generation of the population."""
-        next_generation = Population(size=population.size, chromosome_size=len(population.chromosomes[0].data))
+        next_generation = Population(size=population.size)  # Create Population object without chromosomes
         for i in range(population.size):
             parent_chromosome = population.get_tournament_winner(self.mapping_table)
-            next_generation.chromosomes[i] = parent_chromosome.reproduce()
+            next_generation.chromosomes.append(parent_chromosome.reproduce())  # Add the chromosomes
 
         return next_generation
 

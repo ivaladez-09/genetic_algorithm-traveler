@@ -7,7 +7,7 @@ class Chromosome:
     """Class to get basic attributes and methods for a chromosome."""
     size = None
     data = None
-    aptitude_function = None
+    aptitude_function = list()
 
     def __init__(self, size: int, data=None):
         """Initialize the object.
@@ -28,7 +28,6 @@ class Chromosome:
 
         param mapping_table: Dictionary with the form {1:(p1, p2), ... , n:(p1, p2)}
         return: Float with the current aptitude function"""
-
         def calculate_distance(p1, p2):
             """Get distance between two given points"""
             return math.sqrt(((p1[0] - p2[0]) ** 2) + ((p1[1] - p2[1]) ** 2))
@@ -40,7 +39,7 @@ class Chromosome:
             index += 1
 
         self.aptitude_function = aptitude_function
-        return self.aptitude_function
+        return aptitude_function
 
     def reproduce(self):
         """Combine genes from a parent Chromosome into a new one.

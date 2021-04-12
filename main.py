@@ -1,5 +1,12 @@
-from traveler_services import TravelerServices
 import time
+
+solution_type = 'OOP'
+
+if solution_type == 'OOP':
+    from oop.services import TravelerServices
+
+elif solution_type == 'NP':
+    from np.services import TravelerServices
 
 
 POPULATION_SIZE = 200
@@ -13,4 +20,4 @@ if __name__ == '__main__':
     traveler = TravelerServices(POPULATION_SIZE, COORDINATES)
     traveler.run(GENERATIONS)
     print(time.time() - t1)
-    print(traveler.aptitude_function_history)
+    # print(traveler.aptitude_function_history)

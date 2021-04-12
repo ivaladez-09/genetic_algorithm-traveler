@@ -1,4 +1,4 @@
-from traveler import Traveler
+from .traveler import Traveler
 import time
 
 
