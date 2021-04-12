@@ -1,6 +1,6 @@
 import time
 
-solution_type = 'OOP'
+solution_type = 'NP'
 
 if solution_type == 'OOP':
     from oop.services import TravelerServices
